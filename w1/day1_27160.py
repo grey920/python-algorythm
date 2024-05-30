@@ -8,22 +8,32 @@
 4. 모든 입력이 끝난 후 딕셔너리의 값들 중 5가 존재하면 YES, 없으면 NO를 출력한다
 """
 
-fruit_dict = {"STRAWBERRY": 0, "BANANA": 0, "LIME": 0, "PLUM": 0}
+# 각 과일의 초기 개수 설정
+fruit_counts = {
+    "STRAWBERRY": 0,
+    "BANANA": 0,
+    "LIME": 0,
+    "PLUM": 0
+}
 
 
-def add_fruit_card_in_dict(input_fruit_card):
-    input_fruit, input_fruit_count = input_fruit_card.split()  # 공백 기준으로 과일과 과일 갯수 나누기
-    fruit_dict[input_fruit] += int(input_fruit_count)  # 해당 과일을 딕셔너리 키로 찾아 과일 갯수를 누적한다
+def add_fruit_card(fruit_card):
+    """과일 카드 정보를 딕셔너리에 추가하는 함수"""
+    fruit, count = fruit_card.split()  # 공백 기준으로 과일과 개수 분리
+    fruit_counts[fruit] += int(count)  # 해당 과일의 개수를 누적
 
 
-def has_five_in_dict():
-    return "YES" if 5 in fruit_dict.values() else "NO"
+def has_five_fruits():
+    """과일 개수가 5개 이상인 과일이 있는지 확인하는 함수"""
+    return "YES" if 5 in fruit_counts.values() else "NO"
 
 
-# 총 펼쳐진 카드 갯수
-card_count = int(input())
+# 입력받은 카드 개수
+num_cards = int(input())
 
-for card in range(card_count):
-    add_fruit_card_in_dict(input())
+# 각 카드 정보를 입력받아 처리
+for _ in range(num_cards):
+    add_fruit_card(input())
 
-print(has_five_in_dict())
+# 결과 출력
+print(has_five_fruits())
