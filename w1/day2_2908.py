@@ -1,33 +1,22 @@
 """
 [문제분석]
-- 소문자로 일괄 변경
-- 한 문자씩 순회하면서 딕셔너리에 넣는다
-- 순회가 끝나면, 값이 가장 큰 문자를 꺼낸다
-- 가장 큰 값의 갯수를 체크해서 여러개라면 ? 를 출력한다
+- 숫자를 reverse 뒤집어서 비교한다.
+-> 어떻게 뒤집을까?
+    - slice 이용하기
+    - 반복문 돌리기
+    - 리스트의 reverse 이용하기
 """
-from collections import Counter
 
 
-# 문자열을 받아 가장 많이 나온 문자를 반환한다
-def most_frequent_char(input_str):
-    # 소문자로 변환
-    lower_str = input_str.lower()
-
-    # 문자의 빈도수 계산 ( Counter의 시간복잡도는 O(n) )
-    counter = Counter(lower_str)
-
-    # 가장 많이 나온 값의 빈도수 (max()함수의 시간복잡도 O(n))
-    max_count = max(counter.values())
-
-    # max_count로 가장 많은 문자 리스트 생성 (list comprehension의 시간복잡도 O(n))
-    max_char = [char for char, cnt in counter.items() if cnt == max_count]
-
-    # 가장 많은 문자가 여러개면 ? / 하나면 해당 문자를 출력
-    return '?' if len(max_char) > 1 else max_char[0]
+# 함수1. 뒤집은 숫자를 반환하는 함수
+def reverse_number(input_str):
+    return int(input_str[::-1])
 
 
-# 사용자로부터 입력 받기
-input_str = input()
+# 사용자로부터 입력받기
+input_numbers = input().split()
 
-# 결과 출력
-print(most_frequent_char(input_str))
+# 더 큰 값을 max() 비교하기
+first_reversed = reverse_number(input_numbers[0])
+second_reversed = reverse_number(input_numbers[1])
+print(max(first_reversed, second_reversed))
