@@ -5,8 +5,7 @@
 """
 # 주어진 문자열에서 단어의 갯수를 세는 함수
 def count_words(input_str):
-    word_list = input_str.split() # 공백 기준으로 문자열을 분할하여 리스트로 변환
-    return len(word_list) # 단어의 개수를 반환
+    return len(input_str.split()) # 단어의 개수를 반환
 
 # 사용자로부터 문자열 입력 받기
 input_str = input()
