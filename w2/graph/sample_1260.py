@@ -41,7 +41,7 @@ for i in graph:
 print(graph)
 
 # dfs
-visited = [False] * (n + 1)
+visited = [False] * (n + 1) # 그래프와 똑같은 모양으로 방문 여부 초기화
 dfs(k)
 print()
 
