@@ -48,7 +48,7 @@ print(f'graph = {graph}')
 
 # dfs
 visited_dfs = [False] * (node + 1)
-# dfs(1)
+dfs(1)
 
 # bfs
-bfs(3)
+# bfs(3)
