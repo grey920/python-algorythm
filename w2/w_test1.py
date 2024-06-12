@@ -11,7 +11,6 @@ visited = [False] * 100001
 
 
 def bfs(start):
-    shortest_time = 0
     visited[start] = True
     queue = deque()
     queue.append((start, 0))
@@ -28,5 +27,19 @@ def bfs(start):
                 queue.append((next_v, cur_len + 1))
 
 
-result = bfs(n)
-print(result)
+# result = bfs(n)
+# print(result)
+
+# 이 행동을 취하는게 무조건 이득인 상황에서 행동을 취하는 풀이
+def find(n, k):
+    if n >= k:  # n이 k보다 크거나 같으면 뺄셈으로 처리
+        return n - k
+    elif k == 1:  # k가 1 이면서, n이 k보다 작으면 -> n은 0
+        return 1  # 따라서 1을 한 번 더해준다.
+    elif k % 2:  # k 가 홀수이면 -> + 1 또는 - 1
+        return min(find(n, k + 1), find(n, k - 1)) + 1
+    else:  # k가 짝수이면 -> 2로 나눌 수 있음
+        return min(k - n, find(n, k // 2) + 1)
+
+
+print(find(n, k))
